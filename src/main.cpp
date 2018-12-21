@@ -17,6 +17,9 @@
 // OpenPose dependencies
 #include <openpose/headers.hpp>
 
+// OpenCV include
+#include "opencv2/core.hpp"
+
 float thres_score = 0.6;
 
 // Debugging
@@ -74,6 +77,7 @@ PointObject cloud;
 PeoplesObject peopleObj;
 
 bool quit = false;
+int currentFrame = 0;
 
 // OpenGL window to display camera motion
 GLViewer viewer;
@@ -95,6 +99,8 @@ int image_height = 405;
 
 bool need_new_image = true;
 bool ready_to_start = false;
+
+cv::FileStorage fs;
 
 #define ENABLE_FLOOR_PLANE_DETECTION 1 // Might be disable to use older ZED SDK
 
@@ -342,6 +348,8 @@ void fill_people_ogl(op::Array<float> &poseKeypoints, sl::Mat &xyz) {
         ///////////////////////////  
 
 
+
+        fs << "person_"+std::to_string(person) << "{";
         for (int part = 0; part < partsLink.size() - 1; part += 2) {
             v1 = keypoints_position[partsLink[part]];
             v2 = keypoints_position[partsLink[part + 1]];
@@ -358,8 +366,53 @@ void fill_people_ogl(op::Array<float> &poseKeypoints, sl::Mat &xyz) {
                 vertices.emplace_back(v2.x, v2.y, v2.z);
                 clr.push_back(generateColor(person));
                 clr.push_back(generateColor(person));
+                
+                try{
+                    //std::string s1 = "";
+                    //std::string s2 = "";
+                    //s1.append(std::to_string(v1[0]));
+                    //s1.append(",");
+                    //s1.append(std::to_string(v1[1]));
+                    //s1.append(",");
+                    //s1.append(std::to_string(v1[2]));
+
+                    //s2.append(std::to_string(v2[0]));
+                    //s2.append(",");
+                    //s2.append(std::to_string(v2[1]));
+                    //s2.append(",");
+                    //s2.append(std::to_string(v2[2]));
+                    //std::cout << std::to_string(currentFrame) << " : " << part << " : " << s1 << std::endl;
+                    //std::cout << std::to_string(currentFrame) << " : " << part+1 << " : " << s2 << std::endl;
+
+                    
+
+                    fs << "joint_"+std::to_string(partsLink[part]) << "{";
+                        fs << "x" << std::to_string(v1[0]);
+                        fs << "y" << std::to_string(v1[1]);
+                        fs << "z" << std::to_string(v1[2]);
+                    fs << "}";
+
+
+                    fs << "joint_"+std::to_string(partsLink[part+1]) << "{";
+                        fs << "x" << std::to_string(v2[0]);
+                        fs << "y" << std::to_string(v2[1]);
+                        fs << "z" << std::to_string(v2[2]);
+                    fs << "}";
+
+                    //fs << "part_"+std::to_string(partsLink[part]) << s1;
+                    //fs << "part_"+std::to_string(partsLink[part+1]) << s2;
+                }
+                catch(int e){
+                    std::cout << "Empty frame" << std::endl;
+                }
             }
         }
+        fs << "}";
+        //std::cout << "Person " << person << " with " << partsLink.size() << "parts and " << vertices.size() << " joints" << std::endl;
+        //for(int i = 0 ; i < vertices.size(); i++){
+        //    std::cout << vertices[i] << std::endl;
+        //}
+            
     }
     peopleObj.setVert(vertices, clr);
 }
@@ -426,10 +479,16 @@ void run() {
 
     bool chrono_zed = false;
 
+    fs = cv::FileStorage("/home/mmlab/output.json", cv::FileStorage::WRITE);
+
+    bool success = false;
+
     while (!quit && zed.getSVOPosition() != zed.getSVONumberOfFrames() - 1) {
         INIT_TIMER
         if (need_new_image) {
             if (zed.grab(rt) == SUCCESS) {
+                success = true;
+                fs << "frame_"+std::to_string(currentFrame) << "{";
 
                 zed.retrieveImage(img_buffer, VIEW::VIEW_LEFT, sl::MEM_CPU, image_width, image_height);
                 data_out_mtx.lock();
@@ -440,7 +499,7 @@ void run() {
                 cout << zed.getCurrentFPS() << "        \r" << flush;
 
                 inputImageRGBA = slMat2cvMat(img_buffer);
-                cv::cvtColor(inputImageRGBA, inputImage, CV_RGBA2RGB);
+                cv::cvtColor(inputImageRGBA, inputImage, cv::COLOR_RGBA2RGB);
 
                 if (FLAGS_depth_display)
                     zed.retrieveImage(depth_img_buffer, VIEW::VIEW_DEPTH, sl::MEM_CPU, image_width, image_height);
@@ -495,6 +554,14 @@ void run() {
             //STOP_TIMER("ZED")
             chrono_zed = false;
         }
+
+
+        //std::cout << peopleObj.getVert() << std::endl;
+        if(success){
+            fs << "}";
+        }
+        currentFrame++;
+        success = false;
     }
 }
 

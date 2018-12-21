@@ -112,6 +112,7 @@ public:
 
 
     void setVert(std::vector<sl::float3> &vertices, std::vector<sl::float3> &clr);
+    std::string getVert();
 
     void draw();
 };

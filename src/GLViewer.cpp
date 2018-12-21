@@ -269,6 +269,22 @@ void PeoplesObject::setVert(std::vector<sl::float3> &vertices, std::vector<sl::f
     mtx.unlock();
 }
 
+std::string PeoplesObject::getVert(){
+    std::string out = "";
+    if(this->vert.size()>0){
+        out.append("\[");
+        for(int i = 0; i < this->vert.size(); i++){
+            out.append(std::to_string(this->vert[i][0]));
+            out.append(",");
+            out.append(std::to_string(this->vert[i][1]));
+            out.append(",");
+            out.append(std::to_string(this->vert[i][2]));
+        }
+        out.append("\]");
+    }
+    return out;
+}
+
 void PeoplesObject::updateMesh() {
     if (update) {
         mtx.lock();
@@ -624,7 +640,7 @@ void GLViewer::init(bool useTexture) {
 
 void GLViewer::initialize() {
     char *argv[1];
-    argv[0] = '\0';
+    argv[0] = "\0";
     int argc = 1;
     glutInit(&argc, argv);
     glutInitWindowSize(wnd_w, wnd_h);
