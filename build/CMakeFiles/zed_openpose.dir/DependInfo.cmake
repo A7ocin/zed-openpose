@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/mmlab/zedA7ocin/zed-openpose/src/GLViewer.cpp" "/home/mmlab/zedA7ocin/zed-openpose/build/CMakeFiles/zed_openpose.dir/src/GLViewer.o"
-  "/home/mmlab/zedA7ocin/zed-openpose/src/main.cpp" "/home/mmlab/zedA7ocin/zed-openpose/build/CMakeFiles/zed_openpose.dir/src/main.o"
+  "/home/mmlab/zed-openpose/src/GLViewer.cpp" "/home/mmlab/zed-openpose/build/CMakeFiles/zed_openpose.dir/src/GLViewer.o"
+  "/home/mmlab/zed-openpose/src/main.cpp" "/home/mmlab/zed-openpose/build/CMakeFiles/zed_openpose.dir/src/main.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

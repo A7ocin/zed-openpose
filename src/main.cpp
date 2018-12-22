@@ -58,6 +58,7 @@ DEFINE_bool(ogl_ptcloud, false, "Display the point cloud in the OpenGL window");
 DEFINE_bool(estimate_floor_plane, true, "Initialize the camera position from the floor plan detected in the scene");
 DEFINE_bool(opencv_display, true, "Enable the 2D view of openpose output");
 DEFINE_bool(depth_display, false, "Enable the depth display with openCV");
+DEFINE_bool(json_output, false, "Save a json file with the 3D coordinates of the skeleton(s)");
 
 // Using std namespace
 using namespace std;
@@ -349,7 +350,8 @@ void fill_people_ogl(op::Array<float> &poseKeypoints, sl::Mat &xyz) {
 
 
 
-        fs << "person_"+std::to_string(person) << "{";
+        if (FLAGS_json_output) fs << "person_"+std::to_string(person) << "{";
+
         for (int part = 0; part < partsLink.size() - 1; part += 2) {
             v1 = keypoints_position[partsLink[part]];
             v2 = keypoints_position[partsLink[part + 1]];
@@ -367,51 +369,29 @@ void fill_people_ogl(op::Array<float> &poseKeypoints, sl::Mat &xyz) {
                 clr.push_back(generateColor(person));
                 clr.push_back(generateColor(person));
                 
-                try{
-                    //std::string s1 = "";
-                    //std::string s2 = "";
-                    //s1.append(std::to_string(v1[0]));
-                    //s1.append(",");
-                    //s1.append(std::to_string(v1[1]));
-                    //s1.append(",");
-                    //s1.append(std::to_string(v1[2]));
-
-                    //s2.append(std::to_string(v2[0]));
-                    //s2.append(",");
-                    //s2.append(std::to_string(v2[1]));
-                    //s2.append(",");
-                    //s2.append(std::to_string(v2[2]));
-                    //std::cout << std::to_string(currentFrame) << " : " << part << " : " << s1 << std::endl;
-                    //std::cout << std::to_string(currentFrame) << " : " << part+1 << " : " << s2 << std::endl;
-
-                    
-
-                    fs << "joint_"+std::to_string(partsLink[part]) << "{";
-                        fs << "x" << std::to_string(v1[0]);
-                        fs << "y" << std::to_string(v1[1]);
-                        fs << "z" << std::to_string(v1[2]);
-                    fs << "}";
+                if (FLAGS_json_output){
+                    try{
+                        fs << "joint_"+std::to_string(partsLink[part]) << "{";
+                            fs << "x" << std::to_string(v1[0]);
+                            fs << "y" << std::to_string(v1[1]);
+                            fs << "z" << std::to_string(v1[2]);
+                        fs << "}";
 
 
-                    fs << "joint_"+std::to_string(partsLink[part+1]) << "{";
-                        fs << "x" << std::to_string(v2[0]);
-                        fs << "y" << std::to_string(v2[1]);
-                        fs << "z" << std::to_string(v2[2]);
-                    fs << "}";
+                        fs << "joint_"+std::to_string(partsLink[part+1]) << "{";
+                            fs << "x" << std::to_string(v2[0]);
+                            fs << "y" << std::to_string(v2[1]);
+                            fs << "z" << std::to_string(v2[2]);
+                        fs << "}";
 
-                    //fs << "part_"+std::to_string(partsLink[part]) << s1;
-                    //fs << "part_"+std::to_string(partsLink[part+1]) << s2;
-                }
-                catch(int e){
-                    std::cout << "Empty frame" << std::endl;
+                    }
+                    catch(int e){
+                        std::cout << "Empty frame" << std::endl;
+                    }
                 }
             }
         }
-        fs << "}";
-        //std::cout << "Person " << person << " with " << partsLink.size() << "parts and " << vertices.size() << " joints" << std::endl;
-        //for(int i = 0 ; i < vertices.size(); i++){
-        //    std::cout << vertices[i] << std::endl;
-        //}
+        if (FLAGS_json_output) fs << "}";
             
     }
     peopleObj.setVert(vertices, clr);
@@ -479,7 +459,16 @@ void run() {
 
     bool chrono_zed = false;
 
-    fs = cv::FileStorage("/home/mmlab/output.json", cv::FileStorage::WRITE);
+    time_t rawtime;
+    struct tm * timeinfo;
+    char buffer[80];
+
+    time (&rawtime);
+    timeinfo = localtime(&rawtime);
+
+    strftime(buffer,sizeof(buffer),"%d-%m-%Y %H:%M:%S",timeinfo);
+    std::string currTime(buffer);
+    if (FLAGS_json_output) fs = cv::FileStorage("../output/output_"+currTime+".json", cv::FileStorage::WRITE);
 
     bool success = false;
 
@@ -488,7 +477,7 @@ void run() {
         if (need_new_image) {
             if (zed.grab(rt) == SUCCESS) {
                 success = true;
-                fs << "frame_"+std::to_string(currentFrame) << "{";
+                if (FLAGS_json_output) fs << "frame_"+std::to_string(currentFrame) << "{";
 
                 zed.retrieveImage(img_buffer, VIEW::VIEW_LEFT, sl::MEM_CPU, image_width, image_height);
                 data_out_mtx.lock();
@@ -557,7 +546,7 @@ void run() {
 
 
         //std::cout << peopleObj.getVert() << std::endl;
-        if(success){
+        if(success && FLAGS_json_output){
             fs << "}";
         }
         currentFrame++;

@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/mmlab/zedA7ocin/zed-openpose
+CMAKE_SOURCE_DIR = /home/mmlab/zed-openpose
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/mmlab/zedA7ocin/zed-openpose/build
+CMAKE_BINARY_DIR = /home/mmlab/zed-openpose/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/zed_openpose.dir/depend.make
@@ -59,16 +59,16 @@ include CMakeFiles/zed_openpose.dir/flags.make
 
 CMakeFiles/zed_openpose.dir/src/GLViewer.o: CMakeFiles/zed_openpose.dir/flags.make
 CMakeFiles/zed_openpose.dir/src/GLViewer.o: ../src/GLViewer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mmlab/zedA7ocin/zed-openpose/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/zed_openpose.dir/src/GLViewer.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zed_openpose.dir/src/GLViewer.o -c /home/mmlab/zedA7ocin/zed-openpose/src/GLViewer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mmlab/zed-openpose/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/zed_openpose.dir/src/GLViewer.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zed_openpose.dir/src/GLViewer.o -c /home/mmlab/zed-openpose/src/GLViewer.cpp
 
 CMakeFiles/zed_openpose.dir/src/GLViewer.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/zed_openpose.dir/src/GLViewer.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mmlab/zedA7ocin/zed-openpose/src/GLViewer.cpp > CMakeFiles/zed_openpose.dir/src/GLViewer.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mmlab/zed-openpose/src/GLViewer.cpp > CMakeFiles/zed_openpose.dir/src/GLViewer.i
 
 CMakeFiles/zed_openpose.dir/src/GLViewer.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/zed_openpose.dir/src/GLViewer.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mmlab/zedA7ocin/zed-openpose/src/GLViewer.cpp -o CMakeFiles/zed_openpose.dir/src/GLViewer.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mmlab/zed-openpose/src/GLViewer.cpp -o CMakeFiles/zed_openpose.dir/src/GLViewer.s
 
 CMakeFiles/zed_openpose.dir/src/GLViewer.o.requires:
 
@@ -83,16 +83,16 @@ CMakeFiles/zed_openpose.dir/src/GLViewer.o.provides.build: CMakeFiles/zed_openpo
 
 CMakeFiles/zed_openpose.dir/src/main.o: CMakeFiles/zed_openpose.dir/flags.make
 CMakeFiles/zed_openpose.dir/src/main.o: ../src/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mmlab/zedA7ocin/zed-openpose/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/zed_openpose.dir/src/main.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zed_openpose.dir/src/main.o -c /home/mmlab/zedA7ocin/zed-openpose/src/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mmlab/zed-openpose/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/zed_openpose.dir/src/main.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/zed_openpose.dir/src/main.o -c /home/mmlab/zed-openpose/src/main.cpp
 
 CMakeFiles/zed_openpose.dir/src/main.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/zed_openpose.dir/src/main.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mmlab/zedA7ocin/zed-openpose/src/main.cpp > CMakeFiles/zed_openpose.dir/src/main.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mmlab/zed-openpose/src/main.cpp > CMakeFiles/zed_openpose.dir/src/main.i
 
 CMakeFiles/zed_openpose.dir/src/main.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/zed_openpose.dir/src/main.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mmlab/zedA7ocin/zed-openpose/src/main.cpp -o CMakeFiles/zed_openpose.dir/src/main.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mmlab/zed-openpose/src/main.cpp -o CMakeFiles/zed_openpose.dir/src/main.s
 
 CMakeFiles/zed_openpose.dir/src/main.o.requires:
 
@@ -145,7 +145,7 @@ zed_openpose: /usr/lib/x86_64-linux-gnu/libglog.so
 zed_openpose: /home/mmlab/openpose/build/caffe/lib/libcaffe.so
 zed_openpose: /usr/lib/x86_64-linux-gnu/libgflags.so
 zed_openpose: CMakeFiles/zed_openpose.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/mmlab/zedA7ocin/zed-openpose/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable zed_openpose"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/mmlab/zed-openpose/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable zed_openpose"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/zed_openpose.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -163,6 +163,6 @@ CMakeFiles/zed_openpose.dir/clean:
 .PHONY : CMakeFiles/zed_openpose.dir/clean
 
 CMakeFiles/zed_openpose.dir/depend:
-	cd /home/mmlab/zedA7ocin/zed-openpose/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/mmlab/zedA7ocin/zed-openpose /home/mmlab/zedA7ocin/zed-openpose /home/mmlab/zedA7ocin/zed-openpose/build /home/mmlab/zedA7ocin/zed-openpose/build /home/mmlab/zedA7ocin/zed-openpose/build/CMakeFiles/zed_openpose.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/mmlab/zed-openpose/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/mmlab/zed-openpose /home/mmlab/zed-openpose /home/mmlab/zed-openpose/build /home/mmlab/zed-openpose/build /home/mmlab/zed-openpose/build/CMakeFiles/zed_openpose.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/zed_openpose.dir/depend
 

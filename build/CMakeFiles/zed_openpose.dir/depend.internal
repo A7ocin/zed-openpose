@@ -3,7 +3,7 @@
 
 CMakeFiles/zed_openpose.dir/src/GLViewer.o
  ../include/GLViewer.hpp
- /home/mmlab/zedA7ocin/zed-openpose/src/GLViewer.cpp
+ /home/mmlab/zed-openpose/src/GLViewer.cpp
  /usr/local/cuda/include/builtin_types.h
  /usr/local/cuda/include/channel_descriptor.h
  /usr/local/cuda/include/common_functions.h
@@ -71,7 +71,7 @@ CMakeFiles/zed_openpose.dir/src/GLViewer.o
 CMakeFiles/zed_openpose.dir/src/main.o
  ../include/GLViewer.hpp
  ../include/utils.hpp
- /home/mmlab/zedA7ocin/zed-openpose/src/main.cpp
+ /home/mmlab/zed-openpose/src/main.cpp
  /usr/local/cuda/include/builtin_types.h
  /usr/local/cuda/include/channel_descriptor.h
  /usr/local/cuda/include/common_functions.h

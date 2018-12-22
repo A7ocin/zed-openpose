@@ -52,11 +52,11 @@ sl/Camera.hpp
 openpose/headers.hpp
 -
 
-/home/mmlab/zedA7ocin/zed-openpose/src/GLViewer.cpp
+/home/mmlab/zed-openpose/src/GLViewer.cpp
 GLViewer.hpp
-/home/mmlab/zedA7ocin/zed-openpose/src/GLViewer.hpp
+/home/mmlab/zed-openpose/src/GLViewer.hpp
 
-/home/mmlab/zedA7ocin/zed-openpose/src/main.cpp
+/home/mmlab/zed-openpose/src/main.cpp
 stdio.h
 -
 string.h
@@ -68,15 +68,15 @@ fstream
 sl/Camera.hpp
 -
 GLViewer.hpp
-/home/mmlab/zedA7ocin/zed-openpose/src/GLViewer.hpp
+/home/mmlab/zed-openpose/src/GLViewer.hpp
 utils.hpp
-/home/mmlab/zedA7ocin/zed-openpose/src/utils.hpp
+/home/mmlab/zed-openpose/src/utils.hpp
 gflags/gflags.h
 -
 openpose/headers.hpp
 -
 opencv2/core.hpp
-/home/mmlab/zedA7ocin/zed-openpose/src/opencv2/core.hpp
+/home/mmlab/zed-openpose/src/opencv2/core.hpp
 
 /usr/local/cuda/include/builtin_types.h
 device_types.h
